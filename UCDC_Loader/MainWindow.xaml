@@ -1,0 +1,30 @@
+﻿<Window x:Class="UCDC_Loader.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UCDC_Loader"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        mc:Ignorable="d"
+        Title="Downloading..." Height="400" Width="720" ResizeMode="NoResize">
+    <Grid Margin="10">
+        <StackPanel>
+            <Grid Height="250" Width="700">
+                <Image Height="400" Width="720" Margin="-20 -70 0 20 " gif:ImageBehavior.AnimatedSource="Resources/UCDC_logo_loop_1000.gif" />
+            </Grid>
+            <TextBlock Text="Downloading KoboldCpp program - thanks to it Unity-chan will be able to chat with you!" Height="30" TextWrapping="Wrap" TextAlignment="Center"/>
+            <TextBlock Height="30" TextWrapping="Wrap" TextAlignment="Center">
+                <Run xml:space="preserve" Text="KoboldCpp" />
+                <Run Text=" is an app for self-hosted AI text generation, you can read more about it "/> 
+                <Hyperlink
+                    NavigateUri="https://github.com/LostRuins/koboldcpp/blob/concedo/README.md"
+                    RequestNavigate="Hyperlink_RequestNavigate">
+                    here
+                </Hyperlink>!
+            </TextBlock>
+            <ProgressBar x:Name="ProgressBar" Height="25" Minimum="0" Maximum="100"/>
+            <TextBlock x:Name="FinishText" Visibility="Collapsed" Text="Download Complete!" Margin="0,0,0,10" TextAlignment="Center" FontSize="42"/>
+            <Image Visibility="Collapsed" x:Name="ChanParty" Source="Resources/unity-chan-party.png" Height="128" Width="128" HorizontalAlignment="Right" Margin="0 -115 0 0"></Image>
+        </StackPanel>
+    </Grid>
+</Window>
