@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:UCDC_Loader"
         xmlns:gif="http://wpfanimatedgif.codeplex.com"
         mc:Ignorable="d"
-        Title="Downloading..." Height="400" Width="720" ResizeMode="NoResize">
+        Title="Downloading KoboldCpp..." Height="400" Width="720" ResizeMode="NoResize">
     <Grid Margin="10">
         <StackPanel>
             <Grid Height="250" Width="700">

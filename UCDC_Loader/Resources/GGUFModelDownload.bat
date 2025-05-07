@@ -1,0 +1,1 @@
+curl -L -o ./KoboldCpp/airoboros-mistral2.2-7b.Q4_K_S.gguf "https://huggingface.co/TheBloke/airoboros-mistral2.2-7B-GGUF/resolve/main/airoboros-mistral2.2-7b.Q4_K_S.gguf"

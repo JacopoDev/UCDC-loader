@@ -5,6 +5,8 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Navigation;
+using System.Windows.Shell;
+using Microsoft.WindowsAPICodePack.Taskbar;
 
 namespace UCDC_Loader
 {
@@ -22,11 +24,18 @@ namespace UCDC_Loader
 
         private async void StartDownload()
         {
+            // 0. Create Target directory
+            if (!Directory.Exists("KoboldCpp"))
+            {
+                Directory.CreateDirectory("KoboldCpp");
+            }
+            
+            // 1. Download KoboldCpp
             await Task.Run(() =>
             {
                 var psi = new ProcessStartInfo
                 {
-                    FileName = "KoboldCppDownload.bat",
+                    FileName = "Resources/KoboldCppDownload.bat",
                     RedirectStandardError = true,
                     UseShellExecute = false,
                     CreateNoWindow = true
@@ -42,7 +51,15 @@ namespace UCDC_Loader
                         {
                             Dispatcher.Invoke(() =>
                             {
-                                ProgressBar.Value = percent;
+                                ProgressBar.Value = percent / 2f;
+                                try
+                                {
+                                    TaskbarManager.Instance.SetProgressValue((int)ProgressBar.Value, 100);
+                                }
+                                catch
+                                {
+                                    ;
+                                }
                             });
                         }
                     }
@@ -52,6 +69,48 @@ namespace UCDC_Loader
                 process.BeginErrorReadLine();
                 process.WaitForExit();
             });
+            
+            //2. Download gguf Model 
+            Title = "Downloading GGUF model...";
+            await Task.Run(() =>
+            {
+                var psi = new ProcessStartInfo
+                {
+                    FileName = "Resources/GGUFModelDownload.bat",
+                    RedirectStandardError = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true
+                };
+
+                var process = new Process { StartInfo = psi };
+                process.ErrorDataReceived += (s, e) =>
+                {
+                    if (e.Data != null)
+                    {
+                        var match = Regex.Match(e.Data, @"^[ ]*(\d*)");
+                        if (match.Success && int.TryParse(match.Groups[1].Value, out int percent))
+                        {
+                            Dispatcher.Invoke(() =>
+                            {
+                                ProgressBar.Value = percent / 2f + 50;
+                                try
+                                {
+                                    TaskbarManager.Instance.SetProgressValue((int)ProgressBar.Value, 100);
+                                }
+                                catch
+                                {
+                                    ;
+                                }
+                            });
+                        }
+                    }
+                };
+
+                process.Start();
+                process.BeginErrorReadLine();
+                process.WaitForExit();
+            });
+            
 
             FinishText.Visibility = Visibility.Visible;
             ChanParty.Visibility = Visibility.Visible;
