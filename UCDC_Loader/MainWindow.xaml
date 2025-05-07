@@ -6,13 +6,14 @@
         xmlns:local="clr-namespace:UCDC_Loader"
         xmlns:gif="http://wpfanimatedgif.codeplex.com"
         mc:Ignorable="d"
-        Title="Downloading KoboldCpp..." Height="400" Width="720" ResizeMode="NoResize">
+        Title="Downloading KoboldCpp..." Height="420" Width="720" ResizeMode="NoResize">
     <Grid Margin="10">
         <StackPanel>
             <Grid Height="250" Width="700">
                 <Image Height="400" Width="720" Margin="-20 -70 0 20 " gif:ImageBehavior.AnimatedSource="Resources/UCDC_logo_loop_1000.gif" />
             </Grid>
             <TextBlock Text="Downloading KoboldCpp program - thanks to it Unity-chan will be able to chat with you!" Height="30" TextWrapping="Wrap" TextAlignment="Center"/>
+            <TextBlock Text="It may take a while, both KoboldCpp and AI model are quite heavy, thank you for your patience! 🧡" Height="30" TextWrapping="Wrap" TextAlignment="Center"/>
             <TextBlock Height="30" TextWrapping="Wrap" TextAlignment="Center">
                 <Run xml:space="preserve" Text="KoboldCpp" />
                 <Run Text=" is an app for self-hosted AI text generation, you can read more about it "/> 

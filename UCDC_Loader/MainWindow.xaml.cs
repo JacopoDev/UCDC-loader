@@ -71,7 +71,7 @@ namespace UCDC_Loader
             });
             
             //2. Download gguf Model 
-            Title = "Downloading GGUF model...";
+            Title = "Downloading AI model...";
             await Task.Run(() =>
             {
                 var psi = new ProcessStartInfo
@@ -114,7 +114,7 @@ namespace UCDC_Loader
 
             FinishText.Visibility = Visibility.Visible;
             ChanParty.Visibility = Visibility.Visible;
-            Height = 470;
+            Height = 490;
             ShutdownOnFinish();
         }
         
