@@ -1,1 +1,14 @@
 # UCDC-loader
+
+A simple WPF app that wrap the console command to show download progress.
+
+
+## Used packages
+This application uses the WpfAnimatedGif library, which is licensed under the Apache License 2.0.
+
+Copyright © 2015–2021 Thomas Levesque
+
+Licensed under the Apache License, Version 2.0 (the "License");
+You may obtain a copy of the License at:
+
+http://www.apache.org/licenses/LICENSE-2.0
